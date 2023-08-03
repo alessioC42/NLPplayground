@@ -1,0 +1,11 @@
+{
+    "webserver": {
+        "port": 3000
+    },
+    "naivebayes": {
+        "datasetsPath": "/home/alessio/Documents/GitHub/NLPplayground/naivebayes/trained_datasets"
+    },
+    "ngrams": {
+        "datasetsPath": "../ngram/trained_datasets"
+    }
+}

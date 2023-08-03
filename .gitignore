@@ -1,0 +1,6 @@
+webserver/node_modules
+
+#Files too large. Training data should be provided with execution. Finished model is small.
+naivebayes/training_datasets
+
+.vscode
