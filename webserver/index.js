@@ -75,4 +75,4 @@ app.get("/api/ngram/models", (_req, res) => {
     }
 });
 
-app.listen(settings.webserver.port, () => console.log(`running on http://localhost:${settings.webserver.port}/ !`))
+app.listen(settings.webserver.port, () => console.log(`running on http://localhost:${settings.webserver.port}/`))

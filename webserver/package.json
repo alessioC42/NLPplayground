@@ -4,7 +4,7 @@
   "description": "webserver within git project",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js 3000"
+    "default": "node index.js"
   },
   "author": "",
   "license": "ISC",
