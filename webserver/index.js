@@ -41,7 +41,7 @@ app.get("/api/naivebayes/models", (_req, res) => {
     } catch (err) {
         res.status(500).end();
     }
-})
+});
 
 
 app.listen(settings.webserver.port, () => console.log(`Example app listening on port ${settings.webserver.port}!`))

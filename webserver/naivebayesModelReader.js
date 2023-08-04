@@ -5,10 +5,10 @@ class NaivebayesModelReader {
   constructor(modelsFileLocation) {
     this.trainedData = {};
     console.log(modelsFileLocation);
-    this.loadModels(modelsFileLocation);
+    this.loadModel(modelsFileLocation);
   }
 
-  loadModels(modelsFile) {
+  loadModel(modelsFile) {
     try {
       var data = fs.readFileSync(modelsFile, "utf8");
       this.trainedData = JSON.parse(data);
