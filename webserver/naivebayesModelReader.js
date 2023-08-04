@@ -4,7 +4,6 @@ const math = require("mathjs");
 class NaivebayesModelReader {
   constructor(modelsFileLocation) {
     this.trainedData = {};
-    console.log(modelsFileLocation);
     this.loadModel(modelsFileLocation);
   }
 
