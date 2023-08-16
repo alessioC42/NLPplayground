@@ -1,6 +1,15 @@
 {
     "webserver": {
-        "port": 3000
+        "https": true,
+        "port": {
+            "http": 80,
+            "https": 443
+        },
+        "certificate": {
+            "key": "path to key",
+            "cert": "path to cert",
+            "ca": "path to chain"
+        }
     },
     "naivebayes": {
         "datasetsPath": "/home/alessio/Documents/GitHub/NLPplayground/naivebayes/trained_datasets"

@@ -1,3 +1,5 @@
+const settings = require("./config.json");
+
 const express = require('express');
 const fs = require("fs");
 const path = require("path");
@@ -6,14 +8,13 @@ const NaivebayesModelReader = require("./naivebayesModelReader");
 const NgramsModelReader = require("./ngramsModelReader")
 
 const app = express();
-const settings = require("./config.json");
 
 
 //load all naivebayes models
 console.log("loading all naivebayes models...");
 
 var naivebayesModels = {}
-fs.readdirSync(settings.naivebayes.datasetsPath).forEach((elem, _i)=>{
+fs.readdirSync(settings.naivebayes.datasetsPath).forEach((elem, _i) => {
     naivebayesModels[elem] = new NaivebayesModelReader(path.join(settings.naivebayes.datasetsPath, elem));
 })
 var naivebayesModelsList = Object.keys(naivebayesModels);
@@ -23,7 +24,7 @@ var naivebayesModelsList = Object.keys(naivebayesModels);
 console.log("loading all ngram models...");
 
 var ngramModels = {}
-fs.readdirSync(settings.ngrams.datasetsPath).forEach((elem, _i)=>{
+fs.readdirSync(settings.ngrams.datasetsPath).forEach((elem, _i) => {
     ngramModels[elem] = new NgramsModelReader(path.join(settings.ngrams.datasetsPath, elem));
 })
 var ngramModelsList = Object.keys(ngramModels)
@@ -40,7 +41,7 @@ app.get("/api/naivebayes", (req, res) => {
         res.send(
             naivebayesModels[model].query(query)
         ).end();
-    } catch (err){
+    } catch (err) {
         res.status(500).end();
     }
 });
@@ -61,7 +62,7 @@ app.get("/api/ngram", (req, res) => {
         res.send(
             ngramModels[model].query(query)
         ).end();
-    } catch (err){
+    } catch (err) {
         console.log(err);
         res.status(500).end();
     }
@@ -75,4 +76,24 @@ app.get("/api/ngram/models", (_req, res) => {
     }
 });
 
-app.listen(settings.webserver.port, () => console.log(`running on http://localhost:${settings.webserver.port}/`))
+if (settings.webserver.https) {
+    const https = require("https");
+    const http = require("http");
+
+    http.createServer(app).listen(settings.webserver.port.http, () => {
+        `running on http://localhost:${settings.webserver.port.http}/`
+    })
+
+    https
+        .createServer(
+            {
+                key: fs.readFileSync(settings.webserver.certificate.key),
+                cert: fs.readFileSync(settings.webserver.certificate.cert),
+                ca: fs.readFileSync(settings.webserver.certificate.ca),
+            },
+            app
+        )
+        .listen(settings.webserver.port.https, () => console.log(`running on https://localhost:${settings.webserver.port.https}/`))
+} else {
+    app.listen(settings.webserver.port.http, () => console.log(`running on http://localhost:${settings.webserver.port.http}/`))
+}
