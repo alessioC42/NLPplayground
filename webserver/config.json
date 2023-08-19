@@ -1,8 +1,8 @@
 {
     "webserver": {
-        "https": true,
+        "https": false,
         "port": {
-            "http": 80,
+            "http": 3000,
             "https": 443
         },
         "certificate": {
@@ -12,9 +12,9 @@
         }
     },
     "naivebayes": {
-        "datasetsPath": "/home/alessio/Documents/GitHub/NLPplayground/naivebayes/trained_datasets"
+        "datasetsPath": "/home/emil/WebstormProjects/NLPplayground/naivebayes/trained_datasets"
     },
     "ngrams": {
-        "datasetsPath": "/home/alessio/Documents/GitHub/NLPplayground/ngram/trained_datasets"
+        "datasetsPath": "/home/emil/WebstormProjects/NLPplayground/ngram/trained_datasets"
     }
 }
