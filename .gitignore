@@ -4,3 +4,4 @@ webserver/node_modules
 naivebayes/training_datasets
 
 .vscode
+.idea
