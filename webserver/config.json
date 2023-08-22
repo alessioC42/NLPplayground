@@ -12,9 +12,9 @@
         }
     },
     "naivebayes": {
-        "datasetsPath": "/home/emil/WebstormProjects/NLPplayground/naivebayes/trained_datasets"
+        "datasetsPath": "/home/alessio/Documents/GitHub/NLPplayground/naivebayes/trained_datasets"
     },
     "ngrams": {
-        "datasetsPath": "/home/emil/WebstormProjects/NLPplayground/ngram/trained_datasets"
+        "datasetsPath": "/home/alessio/Documents/GitHub/NLPplayground/ngram/trained_datasets"
     }
 }
