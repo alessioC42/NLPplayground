@@ -30,7 +30,7 @@ async function completeWord() {
     let model = select.value;
 
     try {
-        const response = await fetch(`/api/ngram?model=${model}&q=${decodeURIComponent(query)}`);
+        const response = await fetch(`/api/ngram?model=${model}&q=${decodeURIComponent(query.toLowerCase())}`);
         output.value = await response.text();
     } catch (error) {
         console.error("Error completing word:", error);
